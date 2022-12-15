@@ -1,6 +1,6 @@
 env:
   repo: "https://github.com/farrukh90/nodejs"
-  app_version: "2.0.0"
+  app_version: "3.0.0"
   app_name: "nodejs"
   artifact_link: "us-central1-docker.pkg.dev/terraform-project-gregvalico/"
 
@@ -37,10 +37,10 @@ jobs:
         run: |
           git checkout ${{ env.app_version }}
 
-      - name: Remove Old Images
-        working-directory: ${{ env.app_name }}
-        run: |
-          docker image prune -af
+      # - name: Remove Old Images
+      #   working-directory: ${{ env.app_name }}
+      #   run: |
+      #     docker image prune -af
           
       - name: Image Build
         working-directory: ${{ env.app_name }}
