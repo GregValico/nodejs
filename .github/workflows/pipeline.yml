@@ -1,7 +1,7 @@
 env:
-  repo: "https://github.com/farrukh90/artemis.git"
-  app_version: "10.0.0"
-  app_name: "artemis"
+  repo: "https://github.com/farrukh90/nodejs"
+  app_version: "1.0.0"
+  app_name: "nodejs"
   artifact_link: "us-central1-docker.pkg.dev/terraform-project-gregvalico/"
 
 name: CICD
