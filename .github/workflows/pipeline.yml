@@ -36,17 +36,18 @@ jobs:
         working-directory: ${{ env.app_name }}
         run: |
           git checkout ${{ env.app_version }}
+
+      - name: Remove Old Images
+        working-directory: ${{ env.app_name }}
+        run: |
+          docker image prune -af
           
       - name: Image Build
         working-directory: ${{ env.app_name }}
         run: |
           docker image build -t ${{ env.artifact_link }}${{ env.app_name }}/${{ env.app_name }}:${{ env.app_version }} .
 
-      - name: Remove Old Images
-        working-directory: ${{ env.app_name }}
-        run: |
-          docker image prune -af
-
+      
       - name: Push Image
         working-directory: ${{ env.app_name }}
         run: |
