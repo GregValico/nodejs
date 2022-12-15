@@ -1,34 +1,23 @@
 env:
   repo: "https://github.com/farrukh90/nodejs"
-  app_version: "1.0.0"
+  app_version: "2.0.0"
   app_name: "nodejs"
   artifact_link: "us-central1-docker.pkg.dev/terraform-project-gregvalico/"
 
 name: CICD
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
       - name: Google SA Authorization
         uses: google-github-actions/auth@v1
         with:
@@ -39,7 +28,6 @@ jobs:
           gcloud auth configure-docker \
           us-central1-docker.pkg.dev
 
-      # Runs a set of commands using the runners shell
       - name: Clone Repo
         run: |
           git clone ${{ env.repo }}
